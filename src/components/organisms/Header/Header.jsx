@@ -1,20 +1,8 @@
-import { useEffect, useState } from "react";
-import { NavLink, useLocation } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import classnames from "classnames";
 import './Header.scss';
 
-export const Header = () => {
-    const [types, setTypes] = useState([]);
-    const location = useLocation();
-
-    useEffect(() => {
-        const url = 'https://api.magicthegathering.io/v1/types';
-        fetch(url)
-            .then(r => r.json())
-            .then(data => {
-                setTypes(data.types);
-            });
-    }, [location]);
+export const Header = ({ types }) => {
 
     const getLinkClassName = ({ isActive }) => classnames('header__link', { header__link_active: isActive });
 
