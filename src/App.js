@@ -1,7 +1,7 @@
 import { Routes, Route, Link, BrowserRouter } from "react-router-dom";
 import logo from './logo.svg';
 import './App.scss';
-import { Header, HomePage, CardTypePage } from "./components";
+import { Header, HomePage, homePageLoader, CardTypePage, MainLayout } from "./components";
 import { useEffect, useState } from "react";
 
 function App() {
@@ -14,15 +14,16 @@ function App() {
                 setTypes(data.types);
             });
     }, []);
+
   return (
     <div className="app">
-      <BrowserRouter>
-        <Header types={types} />
-        <Routes>
-          <Route path="/" loader="" index element={<HomePage />} />
+      <Header types={types} />
+      <Routes>
+        {/* <Route path="/" element={<Layout />}> */}
+          <Route path="/"  index loader={homePageLoader} element={<HomePage />} />
           <Route path="/types/:type" element={<CardTypePage />}/>
-        </Routes>
-      </BrowserRouter>
+        {/* </Route> */}
+      </Routes>
     </div>
   );
 }

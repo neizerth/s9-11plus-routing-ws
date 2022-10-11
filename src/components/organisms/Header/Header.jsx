@@ -7,7 +7,7 @@ export const Header = ({ types }) => {
     const getLinkClassName = ({ isActive }) => classnames('header__link', { header__link_active: isActive });
 
     return <header className="header">
-        <NavLink to="/home" 
+        <NavLink to="/" 
             className={getLinkClassName}
         >
             All Cards
